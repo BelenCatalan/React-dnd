@@ -20,7 +20,7 @@ function App() {
       </header>
     </div>
 
-    //SECOND
+    //SECOND FORM
     // <div className="App">
     //   <main className="flexbox">
     //     <Board id="board-1" className="board">
