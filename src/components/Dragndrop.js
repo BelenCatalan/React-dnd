@@ -4,10 +4,8 @@ function DragNDrop(props) {
   console.log(props);
   const dragItem = useRef();
   const handleDragStart = (e, params) => {
-    // let whatItem = { value: e.target.value, name: e.target.name };
     dragItem.current = params;
     console.log(dragItem.current);
-    // console.log(whatItem);
     props.handleItemsParams(dragItem.current);
   };
 
