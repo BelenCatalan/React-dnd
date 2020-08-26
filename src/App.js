@@ -7,16 +7,22 @@ import './main.css';
 
 function App() {
   const [dataList, setDataList] = useState([]);
+  const [dragging, setDragging] = useState(false);
 
   useEffect(() => {
     let data = getData();
     setDataList(data);
   }, []);
 
+  const handleItemsParams = (data) => {
+    console.log(data);
+    setDragging(true);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <DragNDrop data={dataList} />
+        <DragNDrop data={dataList} handleItemsParams={handleItemsParams} dragging={dragging} />
       </header>
     </div>
 
