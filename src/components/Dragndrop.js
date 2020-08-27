@@ -15,6 +15,14 @@ function DragNDrop(props) {
 
   const handleDragEnter = (e, params) => {
     console.log('entering...', params);
+    console.log(dragNode.current);
+    console.log(e.target);
+    props.handleEnterDrag({
+      currentItem: dragItem.current, //los datos del que estoy moviendo
+      params: params, //los datos donde entra
+      nodeEnter: e.target, //nodo al que me muevo con el evento
+      nodeMove: dragNode.current, //mi nodo
+    });
   };
 
   const handleDragEnd = () => {

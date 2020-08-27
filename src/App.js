@@ -25,10 +25,14 @@ function App() {
     setDragging(data);
   };
 
+  const handleEnterDrag = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <DragNDrop data={dataList} handleItemsParams={handleItemsParams} dragging={dragging} handleDragEndItems={handleDragEndItems} />
+        <DragNDrop data={dataList} handleItemsParams={handleItemsParams} dragging={dragging} handleDragEndItems={handleDragEndItems} handleEnterDrag={handleEnterDrag} />
       </header>
     </div>
 
