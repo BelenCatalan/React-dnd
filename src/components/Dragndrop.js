@@ -13,6 +13,10 @@ function DragNDrop(props) {
     props.handleItemsParams(dragItem.current);
   };
 
+  const handleDragEnter = (e, params) => {
+    console.log('entering...', params);
+  };
+
   const handleDragEnd = () => {
     console.log('final drag...');
     dragNode.current.removeEventListener('dragend', handleDragEnd);
@@ -43,6 +47,13 @@ function DragNDrop(props) {
                   onDragStart={(e) => {
                     handleDragStart(e, { grpI, itemI });
                   }}
+                  onDragEnter={
+                    props.dragging
+                      ? (e) => {
+                          handleDragEnter(e, { grpI, itemI });
+                        }
+                      : null
+                  }
                   key={item}
                   name={item}
                   className={props.dragging ? getStyles({ grpI, itemI }) : 'dnd-item'}
