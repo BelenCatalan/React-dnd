@@ -3,11 +3,25 @@ import React, { useState, useRef, useEffect } from 'react';
 function DragNDrop(props) {
   console.log(props);
   const dragItem = useRef();
+  const dragNode = useRef();
+
   const handleDragStart = (e, params) => {
     dragItem.current = params;
-    console.log(dragItem.current);
+    dragNode.current = e.target;
+    console.log(dragNode.current);
+    dragNode.current.addEventListener('dragend', handleDragEnd);
     props.handleItemsParams(dragItem.current);
   };
+
+  const handleDragEnd = () => {
+    console.log('final drag...');
+    dragNode.current.removeEventListener('dragend', handleDragEnd);
+    // dragItem.current = null;
+    // dragNode.current = null;
+    props.handleDragEndItems(false);
+  };
+
+  //el estado lo tengo en la app, por tanto debo usar la funcion y subirla a la madre.
 
   const getStyles = (params) => {
     const currentItem = dragItem.current;

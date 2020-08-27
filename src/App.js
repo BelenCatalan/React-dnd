@@ -16,13 +16,19 @@ function App() {
 
   const handleItemsParams = (data) => {
     console.log(data);
-    setDragging(true);
+    setTimeout(() => {
+      setDragging(true);
+    }, 0);
+  };
+
+  const handleDragEndItems = (data) => {
+    setDragging(data);
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <DragNDrop data={dataList} handleItemsParams={handleItemsParams} dragging={dragging} />
+        <DragNDrop data={dataList} handleItemsParams={handleItemsParams} dragging={dragging} handleDragEndItems={handleDragEndItems} />
       </header>
     </div>
 
