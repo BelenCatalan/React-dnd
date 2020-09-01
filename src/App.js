@@ -27,6 +27,20 @@ function App() {
 
   const handleEnterDrag = (data) => {
     console.log(data);
+
+    if (data.nodeEnter !== data.nodeMove) {
+      console.log('NO ES EL MISMO');
+      // let newDataList = [...dataList];
+      // // console.log(newDataList);
+      // newDataList[data.params.grpI].items.splice(data.params.itemI, 0, newDataList[data.currentItem.grpI].items.splice(data.currentItem.itemI, 1)[0]);
+      // data.currentItem = data.params;
+      setDataList((dataList) => {
+        let newDataList = [...dataList];
+        newDataList[data.params.grpI].items.splice(data.params.itemI, 0, newDataList[data.currentItem.grpI].items.splice(data.currentItem.itemI, 1)[0]);
+        data.currentItem = data.params;
+        return newDataList;
+      });
+    }
   };
 
   return (
