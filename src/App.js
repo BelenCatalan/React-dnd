@@ -36,8 +36,9 @@ function App() {
       // data.currentItem = data.params;
       setDataList((dataList) => {
         let newDataList = [...dataList];
-        newDataList[data.params.grpI].items.splice(data.params.itemI, 0, newDataList[data.currentItem.grpI].items.splice(data.currentItem.itemI, 1)[0]);
-        data.currentItem = data.params;
+        newDataList[data.params.grpI].items.splice(data.params.itemI, 0, dataList[data.currentItem.grpI].items.splice(data.currentItem.itemI, 1)[0]);
+        data.currentItem.grpI = data.params.grpI;
+        data.currentItem.itemI = data.params.itemI;
         return newDataList;
       });
     }
