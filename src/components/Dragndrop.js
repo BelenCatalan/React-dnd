@@ -28,8 +28,6 @@ function DragNDrop(props) {
   const handleDragEnd = () => {
     console.log('final drag...');
     dragNode.current.removeEventListener('dragend', handleDragEnd);
-    // dragItem.current = null;
-    // dragNode.current = null;
     props.handleDragEndItems(false);
   };
 
@@ -45,8 +43,21 @@ function DragNDrop(props) {
   return (
     <div className="drag-n-drop">
       {props.data.map((grp, grpI) => {
+        console.log(grp.items.length);
         return (
-          <div key={grp.title} name={grp} className="dnd-group">
+          <div
+            draggable="true"
+            key={grp.title}
+            name={grp}
+            className="dnd-group"
+            onDragEnter={
+              props.dragging && !grp.items.length
+                ? (e) => {
+                    handleDragEnter(e, { grpI, itemI: 0 });
+                  }
+                : null
+            }
+          >
             <div className="group-title">{grp.title}</div>
             {grp.items.map((item, itemI) => {
               return (
