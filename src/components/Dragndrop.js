@@ -1,14 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 
 function DragNDrop(props) {
-  console.log(props);
   const dragItem = useRef();
   const dragNode = useRef();
 
   const handleDragStart = (e, params) => {
     dragItem.current = params;
     dragNode.current = e.target;
-    console.log(dragNode.current);
     dragNode.current.addEventListener('dragend', handleDragEnd);
     props.handleItemsParams(dragItem.current);
   };

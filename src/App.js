@@ -15,7 +15,6 @@ function App() {
   }, []);
 
   const handleItemsParams = (data) => {
-    console.log(data);
     setTimeout(() => {
       setDragging(true);
     }, 0);
@@ -26,14 +25,8 @@ function App() {
   };
 
   const handleEnterDrag = (data) => {
-    console.log(data);
-
     if (data.nodeEnter !== data.nodeMove) {
-      console.log('NO ES EL MISMO');
-      // let newDataList = [...dataList];
-      // // console.log(newDataList);
-      // newDataList[data.params.grpI].items.splice(data.params.itemI, 0, newDataList[data.currentItem.grpI].items.splice(data.currentItem.itemI, 1)[0]);
-      // data.currentItem = data.params;
+      console.log('is not the same');
       setDataList((dataList) => {
         let newDataList = [...dataList];
         newDataList[data.params.grpI].items.splice(data.params.itemI, 0, dataList[data.currentItem.grpI].items.splice(data.currentItem.itemI, 1)[0]);
